@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import axios from 'axios';
+import { backendurl } from '../App';
 
-const Login = () => {
+const Login = ({setToken}) => {
 
     const [email , setEmail] = useState('')
     const [password , setPassword] = useState('')
 
     const submitHandler = async (e) => {
-        email.preventDefault()
         try {
+            e.preventDefault()
+            const response = await axios.post("/api/user/admin",{
+                email,password
+            })
+            console.log(response);
             
+            if (response.data.success) {
+                setToken(response.data.token)
+                toast.success("admin logged")
+            }
         } catch (error) {
+            console.log("admin login error",error);
+            toast.error(error.message)
             
         }
     }
