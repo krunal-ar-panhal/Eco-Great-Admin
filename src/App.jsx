@@ -10,7 +10,7 @@ import Login from "./pages/Login";
 import { Toaster } from "react-hot-toast";
 
 export const backendurl = import.meta.env.VITE_BACKEND_URL
-
+export const currency = '$'
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem("token") ? localStorage.getItem("token"): "");
