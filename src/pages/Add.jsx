@@ -45,6 +45,7 @@ const Add = ({token}) => {
             setImage2(false)
             setImage3(false)
             setImage4(false)
+            window.location.reload();
         }else{
             toast.error(response.data,message)
         }
